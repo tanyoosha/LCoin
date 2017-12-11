@@ -49,26 +49,40 @@ class AuthService {
         
         let lowerCaseLogin = login.lowercased()
         
-        let header = [
-            "Content-Type": "application/json"
-        ]
         let body: [String: Any] = [
             "login": lowerCaseLogin,
             "password": password
         ]
         
-        Alamofire.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+        Alamofire.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
             
-            if response.result.error == nil {
+            if response.response?.statusCode == 200 {
                 completition(true)
             } else {
                 completition(false)
-                debugPrint(response.result.error as Any)
+                debugPrint(response.response?.statusCode as Any)
             }
         }
-        
     }
     
-    
+    func loginUser(login: String, password: String, completition: @escaping CompletionHandler) {
+       
+        let lowerCaseLogin = login.lowercased()
+        
+        let body: [String: Any] = [
+            "login": lowerCaseLogin,
+            "password": password
+        ]
+        
+        Alamofire.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+            
+            if response.response?.statusCode == 200 {
+                completition(true)
+            } else {
+                completition(false)
+                debugPrint(response.response?.statusCode as Any)
+            }
+        }
+    }
     
 }

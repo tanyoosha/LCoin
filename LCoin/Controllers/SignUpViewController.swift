@@ -30,9 +30,12 @@ class SignUpViewController: UIViewController {
         
         AuthService.instance.registerUser(login: login, password: password) { (success) in
             if success {
-                print("Пользователь зарегестрирован!")
+                AuthService.instance.loginUser(login: login, password: password, completition: { (success) in
+                    if success {
+                        print("Пользователь авторизован!")
+                    }
+                })
             }
         }
     }
-    
 }

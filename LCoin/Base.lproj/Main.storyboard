@@ -78,6 +78,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="LoginBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mme-bf-zMZ"/>
                                     <action selector="toSignUpBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UnT-Ga-HMK"/>
                                 </connections>
                             </button>
@@ -94,7 +95,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="FDW-lz-mfh" kind="show" identifier="toSecond" id="pgF-GN-aE6"/>
+                        <outlet property="loginTxt" destination="jo0-iz-hsN" id="EM2-G4-Iek"/>
+                        <outlet property="passwordTxt" destination="hPh-pe-vA5" id="Hc5-0i-ahO"/>
+                        <segue destination="FDW-lz-mfh" kind="show" identifier="toSignUp" id="pgF-GN-aE6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
